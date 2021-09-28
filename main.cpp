@@ -125,7 +125,6 @@ int main()
 		A*=c;
 		cout<<"A*=c ";
 		A.printPolynomial();	
-	
 		
 
 	return 0;

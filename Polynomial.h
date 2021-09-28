@@ -21,8 +21,7 @@ public:
 	void operator*=(Polynomial &B);//Overloading *= operator for Polynomials
 	Polynomial *operator*(int val);//Overloading * operator for Polynomial*int
 	void operator*=(int val);//Overloading *= operator for Polynomial*int
-
-
+	
 private:
 	double *Coef;//Array for storing the coeficients
 	int grade;//polynomial grade

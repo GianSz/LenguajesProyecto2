@@ -91,39 +91,67 @@ void Polynomial::operator+=(const Polynomial &B)
 }
 
 //Overloading + operator
+//HECHO :)
 Polynomial *Polynomial::operator+(Polynomial &B)
 {
 	
 	Polynomial *res;
-	if (grade>=B.grade)
-		res = new Polynomial(grade);
-	else
+	if (grade>=B.grade){
+		res = new Polynomial(grade);		
+
+		int i;
+		for(i = 0; i <= grade; i++){
+
+			if(i<=B.grade)
+				res->Coef[i] = Coef[i] + B.Coef[i];
+			else 
+				res->Coef[i] = Coef[i];
+		}
+
+	}
+
+	else{
 		res = new Polynomial(B.grade);
-	/**************************************
-		write your code here
-	***************************************/
 
+		int i;
+		for(i = 0; i <= B.grade; i++){
 
+			if(i<=grade)
+				res->Coef[i] = Coef[i] + B.Coef[i];
+			else 
+				res->Coef[i] = B.Coef[i];
+		}
+	}
 
-	/*************************************/
 	return res;
 	
 }
 
-//Overloading * operatorfor Polynomial*Polynomial
+//Overloading * operatorfor Polynomial*Polynomial		
 Polynomial *Polynomial::operator*(Polynomial &B)
 {
 	
-	
 	Polynomial *res;
-	res = new Polynomial(grade + B.grade);
-	/**************************************
-		write your code here
-	***************************************/
+	res = new Polynomial(grade + B.grade); 
 
+	Polynomial *auxiliar;
+	auxiliar = new Polynomial(grade + B.grade);
+	
+	for(int i = 0; i<=grade; i++){
 
+		if(i>0){
+			for(int k = 0; k<i; k++){
+				auxiliar->Coef[k] = 0;
+			}
+		}
 
-	/*************************************/
+		for(int j = i; j<=B.grade+i; j++){
+			auxiliar->Coef[j] = Coef[i] * B.Coef[j-i];
+		}
+
+		res = res->operator+(*auxiliar);
+	}
+
 	return res;
 }
 
@@ -143,16 +171,16 @@ void Polynomial::operator*=(Polynomial &B)
 }
 
 //Overloading * operatorfor Polynomial*int
+//¿Esto existe?
 Polynomial *Polynomial::operator*(int val)
 {
 	Polynomial *res;
-	/**************************************
-		write your code here
-	***************************************/
+	res = new Polynomial(grade);
 
+	for(int i = 0; i<grade; i++){
+		res->Coef[i] = Coef[i] * val;
+	}
 
-
-	/*************************************/
 	return res;
 }
 
@@ -161,14 +189,6 @@ Polynomial *Polynomial::operator*(int val)
 //Overloading * operatorfor Polynomial*int
 void Polynomial::operator*=(int c)
 {
-	
-	/**************************************
-		write your code here
-	***************************************/
-
-
-
-	/*************************************/
 
 }
 
