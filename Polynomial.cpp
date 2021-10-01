@@ -1,5 +1,5 @@
 #include "Polynomial.h"
-
+#include <stdlib.h>
 //Default constructpolyObj: it creates a Polynomial with grade 99
 Polynomial::Polynomial()
 {
@@ -79,15 +79,36 @@ int Polynomial::getGrade()
 }
 
 //Overloading += operator
+//HECHO :)
 void Polynomial::operator+=(const Polynomial &B)
 {
-	/**************************************
-		write your code here
-	***************************************/
+	Polynomial *res;
+	if (grade>=B.grade){
+		res = new Polynomial(grade);	
 
+		int i;
+		for(i = 0; i <= grade; i++){
 
+			if(i<=B.grade)
+				res->Coef[i] = Coef[i] + B.Coef[i];
+			else 
+				res->Coef[i] = Coef[i];
+		}
 
-	/*************************************/
+	}
+	else{
+		res = new Polynomial(B.grade);
+
+		int i;
+		for(i = 0; i <= B.grade; i++){
+
+			if(i<=grade)
+				res->Coef[i] = Coef[i] + B.Coef[i];
+			else 
+				res->Coef[i] = B.Coef[i];
+		}
+	}
+	operator=(*res);
 }
 
 //Overloading + operator
@@ -127,15 +148,21 @@ Polynomial *Polynomial::operator+(Polynomial &B)
 	
 }
 
-//Overloading * operatorfor Polynomial*Polynomial		
+//Overloading * operatorfor Polynomial*Polynomial	
+//HECHO :)	
 Polynomial *Polynomial::operator*(Polynomial &B)
 {
 	
 	Polynomial *res;
-	res = new Polynomial(grade + B.grade); 
+	res = new Polynomial(grade + B.grade);
 
 	Polynomial *auxiliar;
 	auxiliar = new Polynomial(grade + B.grade);
+
+	for(int i = 0; i<= grade + B.grade; i++){
+		res->Coef[i] = 0;
+		auxiliar->Coef[i] = 0;
+	}
 	
 	for(int i = 0; i<=grade; i++){
 
@@ -157,50 +184,52 @@ Polynomial *Polynomial::operator*(Polynomial &B)
 
 
 //Overloading *= operatorfor Polynomial*Polynomial
+//HECHO :)
 void Polynomial::operator*=(Polynomial &B)
 {
-
-	/**************************************
-		write your code here
-	***************************************/
-
-
-
-	/*************************************/
-
-}
-
-//Overloading * operatorfor Polynomial*int
-//¿Esto existe?
-Polynomial *Polynomial::operator*(int val)
-{
 	Polynomial *res;
-	res = new Polynomial(grade);
+	res = new Polynomial(grade + B.grade);
 
-	for(int i = 0; i<grade; i++){
-		res->Coef[i] = Coef[i] * val;
+	Polynomial *auxiliar;
+	auxiliar = new Polynomial(grade + B.grade);
+
+	for(int i = 0; i<= grade + B.grade; i++){
+		res->Coef[i] = 0;
+		auxiliar->Coef[i] = 0;
 	}
+	
+	for(int i = 0; i<=grade; i++){
 
-	return res;
+		if(i>0){
+			for(int k = 0; k<i; k++){
+				auxiliar->Coef[k] = 0;
+			}
+		}
+
+		for(int j = i; j<=B.grade+i; j++){
+			auxiliar->Coef[j] = Coef[i] * B.Coef[j-i];
+		}
+
+		res = res->operator+(*auxiliar);
+	}
+	operator=(*res);
 }
 
-
-
 //Overloading * operatorfor Polynomial*int
+//HECHO :)
 void Polynomial::operator*=(int c)
 {
-
+	for(int i = 0; i<=grade;i++){
+		Coef[i] = Coef[i] * c;
+	}
 }
 
 
-//Overloading + operator
-void Polynomial::operator=(const Polynomial &B)
-{
-	/**************************************
-		write your code here
-	***************************************/
-
-
-
-	/*************************************/
+//Overloading = operator
+//HECHO :)
+void Polynomial::operator=(const Polynomial &B){
+	initPolynomial(B.grade);
+	for(int i = 0; i<=B.grade;i++){
+		Coef[i] = B.Coef[i];
+	}
 }
