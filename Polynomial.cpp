@@ -78,8 +78,7 @@ int Polynomial::getGrade()
 	return grade;
 }
 
-//Overloading += operator
-//HECHO :)
+/*operator+= method: sums two polynomials and stores the result in the current polynomial*/
 void Polynomial::operator+=(const Polynomial &B)
 {
 	Polynomial *res;
@@ -111,8 +110,7 @@ void Polynomial::operator+=(const Polynomial &B)
 	operator=(*res);
 }
 
-//Overloading + operator
-//HECHO :)
+/*operator+ method: sums two polynomials and stores the result in a new polynomial*/
 Polynomial *Polynomial::operator+(Polynomial &B)
 {
 	
@@ -148,8 +146,7 @@ Polynomial *Polynomial::operator+(Polynomial &B)
 	
 }
 
-//Overloading * operatorfor Polynomial*Polynomial	
-//HECHO :)	
+/*operator* method: multiplies two polynomials and stores the result in a new polynomial*/
 Polynomial *Polynomial::operator*(Polynomial &B)
 {
 	
@@ -182,9 +179,7 @@ Polynomial *Polynomial::operator*(Polynomial &B)
 	return res;
 }
 
-
-//Overloading *= operatorfor Polynomial*Polynomial
-//HECHO :)
+/*operator*= method: multiplies two polynomials and stores the result in the current polynomial*/
 void Polynomial::operator*=(Polynomial &B)
 {
 	Polynomial *res;
@@ -215,8 +210,7 @@ void Polynomial::operator*=(Polynomial &B)
 	operator=(*res);
 }
 
-//Overloading * operatorfor Polynomial*int
-//HECHO :)
+/*operator*= method: multiplies a polynomial with a constant and stores the result in the current polynomial*/
 void Polynomial::operator*=(int c)
 {
 	for(int i = 0; i<=grade;i++){
@@ -224,9 +218,7 @@ void Polynomial::operator*=(int c)
 	}
 }
 
-
-//Overloading = operator
-//HECHO :)
+/*operator= method: matches a polynomial B with the current polynomial*/
 void Polynomial::operator=(const Polynomial &B){
 	initPolynomial(B.grade);
 	for(int i = 0; i<=B.grade;i++){

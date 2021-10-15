@@ -1,5 +1,8 @@
 #include "Polynomial.h"
 
+/*Gian Paul Sánchez Aristizabal
+Maria Paula Ayala Lizarazo
+*/
 int main()
 {
 	int size;
