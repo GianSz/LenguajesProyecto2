@@ -19,7 +19,6 @@ public:
 	void initPolynomial(int i); //delete the current polynomomial, and creates new one with grade i
 	Polynomial *operator*(Polynomial &B); //Overloading * operator for Polynomials
 	void operator*=(Polynomial &B);//Overloading *= operator for Polynomials
-	Polynomial *operator*(int val);//Overloading * operator for Polynomial*int
 	void operator*=(int val);//Overloading *= operator for Polynomial*int
 	
 private:
