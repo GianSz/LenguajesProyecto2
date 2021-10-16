@@ -2,6 +2,7 @@
 
 /*Gian Paul Sánchez Aristizabal
 Maria Paula Ayala Lizarazo
+https://replit.com/@mpayala/Proyecto-Lenguajes-2#main.cpp
 */
 int main()
 {
